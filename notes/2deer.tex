@@ -1,0 +1,180 @@
+%% ****** Start of file template.aps ****** 
+%%
+%%
+%%  This file is part of the APS files in the REVTeX 4 distribution.
+%%  Version 4.0 of REVTeX, August 2001
+%%
+%%
+%%  Copyright (c) 2001 The American Physical Society.
+%%
+%%  See the REVTeX 4 README file for restrictions and more information.
+%%
+%%
+%%  This is a template for producing manuscripts for use with REVTEX 4.0
+%%  Copy this file to another name and then work on that file.
+%%  That way, you always have this original template file to use.
+%%
+%%  Group addresses by affiliation; use superscriptaddress for long
+%%  author lists, or if there are many overlapping affiliations.
+%%  For Phys. Rev. appearance, change preprint to twocolumn.
+%%  Choose pra, prb, prc, prd, pre, prl, prstab, or rmp for journal
+%%  Add 'draft' option to mark overfull boxes with black boxes
+%%  Add 'showpacs' option to make PACS codes appear
+\documentclass[aps,prb,twocolumn,showpacs,superscriptaddress,citeautoscript]{revtex4}  % for review and submission
+%\documentclass[aps,preprint,showpacs,superscriptaddress,groupedaddress]{revtex4}  % for double-spaced preprint
+\usepackage{graphicx}   % needed for figures
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}           % for math
+\usepackage{amssymb}  % for math
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+ \usepackage{color,soul}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsmath, dsfont}
+\usepackage{subfigure, psfrag}
+%\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{amsmath}
+\usepackage{appendix}
+\usepackage{multirow}
+\usepackage{lipsum, textcase}
+%\usepackage[normalem]{ulem}
+%\usepackage{booktabs, psfrag, soul}
+
+%\graphicspath{{Final_Figures/}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\tab}{\hspace*{2em}}
+\newcommand{\tabf}{\hspace*{0.2em}}
+\newcommand\T{\rule{0pt}{2.6ex}}
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}}
+\interfootnotelinepenalty=10000
+\setcounter{MaxMatrixCols}{10}
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{0.0in}
+\setlength{\tabcolsep}{12pt}
+
+\newcommand*{\citen}[1]{%
+  \begingroup
+    \romannumeral-`\x % remove space at the beginning of \setcitestyle
+    \setcitestyle{numbers}%
+    \cite{#1}%
+  \endgroup   
+}
+
+\def\cFrac#1#2{%
+\begin{array}{@{}c@{}}\multicolumn{1}{c|}{#1}\\%
+\hline\multicolumn{1}{|c}{#2}\end{array}}
+
+\def\cFracB#1#2{%
+\vcenter{\hbox{\strut$#1$\,\vrule}\hrule\hbox{\strut\vrule\,$#2$}}}
+
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+
+\begin{document}
+
+\title{How to detect broad distributions of static and dynamic correlations in many-body localized phases using local spectroscopy}
+\author{Abhishek Raj}
+\affiliation{Department of Physics, Indian Institute of Technology BHU, Varanasi 221005, India}
+\author{S. Gopalakrishnan}
+\author{V. Oganesyan}
+\affiliation{Department of Engineering Science and Physics, College of Staten Island, CUNY, Staten Island, NY 10314, USA}
+\affiliation{Physics program and Initiative for the Theoretical Sciences, The Graduate Center, CUNY, New York, NY 10016, USA }
+\date{\today}
+\begin{abstract}
+\end{abstract}
+%
+%\pacs{05.30.Rt, 05.30.Jp, 67.25.D-, 03.75.Lm}
+\maketitle
+Many-body localization is a dynamical phenomenon whereby generic interacting systems can fail to sample any of the conventional equilibrium ensembles. Such behavior may be separated from the more conventional ergodic behavior by at least one phase transition, or may instead exist as a crossover phenomenon.  While much of the current effort of the community has focused on the understanding the nature of the putative ergodicity breaking phase transition, this work instead addresses a heretofore poorly understood aspect of the many-body localized phase itself -- the existence of strong fluctuations of typically slow dynamics, e.g. in dephasing and entanglement. It is an amalgam of sorts of two prior lines of work where the basic conceptual ingredients used here were introduced. First, in the paper by Serbyn and collaborators the rather natural notion of using spin-echoes\cite{Serbyn} to probe MBL phases was fleshed out with a particular eye towards relating temporal (powerlaw) decay of local observables and (logarithmic) growth of entanglement. Second, Pekker and collaborators pointed out\cite{Pekker} that the widely help phenomenological view of the effective Hamiltonian of MBL phases (reviewed below) in reality must be amended with severe fluctuations to be consistent with microscopic short ranged Hamiltonians.  That work left the question of how such fluctuations may be manifested in physical observables open. 
+
+One key result of this Letter is a demonstration of an echo protocol (in the spirit of Serbyn etal)  capable of probing the full counting statistics of effective Hamiltonian parameters directly.  In addition to broad distributions of couplings we also expect\cite{PalHuse} broadly distributed correlators, hence we also study the onset of broad distributions in realistic quench-type experiments and compare them to "static" correlators.
+\section{MBL basics}
+We shall consider simple spin chain models known to display MBL, e.g. 
+\be
+H=\sum_j h_j \sigma^z_j +J \sigma^\pm_j \sigma^\mp_{j+1}.
+\ee
+Extending the notion of local adiabaticity to operators it was argued\cite{Abanin,Huse} that such Hamiltonian in the disorder dominated MBL regime may be rewritten using locally dressed spin operators $\tau^z_j =Z^z_j \sigma^z_j+\ldots$ \be
+H=\sum b_j \tau^z_j +J_{a,b} \tau^z_a \tau^z_b+J_{a,b,c} \tau^z_a \tau^z_b\tau^z_c+\ldots
+\ee 
+and similar for $\tau^\pm_j$ to keep track of the renormalization of spin raising/lowering operators) with $Z^{z,\pm}>0$ in the thermodynamic limit.
+Evidently, the task of computing physical observables has been separated into computing a mapping between $\sigma$'s and $\tau$'s (which is not necessarily unique) and computing the eigenfrequencies of various configurations of $\tau$'s as imposed by the pattern of $b_j$'s and $J_{\ldots}$. The latter are generally expected to decay rapidly with separation and/or number of spins involved.  The central finding of Pekker etal was that the probability distribution $P(J_{\ldots})$ exhibits a certain flow towards a very broad $1/J$-like distribution for progressively distant couplings.
+
+In this paper we will focus on just two spins and consider the implications of the findings of Pekker etal. We may encode the entire matrix of couplings (i.e. among 3, 4, 5 spins and so on) as the distribution of just 2-spin couplings, $J_2$. More precisely, each of the $2^{L-2}$ configurations of other spins in the system ($L$ is the total length) can in principle lead to a distinct value of $J_2$.
+
+For the time being we will ignore the (potentially) important difference between $\sigma$ and $\tau$ (i.e. set $Z=1$) while keeping with the most general form of the $H[\tau^z]$. This approximation will allow us to describe the dynamical protocol in detail while keeping in mind that it can only be exactly realized if external probes can couple to $\tau$'s directly (which is most likely unrealistic).  
+
+To start, we recall that unlike persistence of partly conserved operators 
+\be
+\langle \sigma^z(t\to \infty)\sigma^z\rangle=Z_z^2
+\ee 
+transverse autocorrelations generically decay due to dephasing among many-body eigenstates
+\be
+\langle \sigma^+(t\to \infty)\sigma^-\rangle=Z_\perp^2 \langle \sigma^+(t\to \infty)\sigma^-\rangle=Z_\perp^2 
+\ee 
+
+\subsection{double resonance basics}
+
+
+
+\section{work notes and other junk below}
+\begin{enumerate}
+\item introduction -- focus on fleshing out MBL phenomenology, building on Pekker etal and Serbyn etal; need a better understanding of correlations and fluctuations in typically exponentially decaying objects inside MBL
+\begin{enumerate}
+\item Theory summary: phenomenology of the MBL -- L-bits and their interactions defined; DEER protocols of the past+tweak to access two L-bit interaction distribution; broad distributions of other observables
+\item open questions -- what is the meaning of broad distributions? is it possible to attribute length scales to distributions directly, e.g. from mean and variance of log?
+\end{enumerate}
+\item announce results
+\begin{enumerate}
+	\item 2-DEER averaged w.r.t. to p-bit product states -- characterization of distributions via time/energy scales $\to$ length scales; empirical extractions of length scales of log onset times for decay and saturation, also midpoint (also coeff of log t?)
+	\item +- and zz static correlators overaged w.r.t. eigenstates; compare to quench estimates; mention OTOC as the variance vs. time
+	\item intra- vs out- of sample fluctuations?
+\end{enumerate}
+\item outline
+\end{enumerate}
+\section{work notes/to-do lists}
+\subsection{open theory questions}
+\begin{enumerate}
+	\item average behavior of off-shell ("forward approximation") perturbation theory -- what does it predict? Need to dig up or regenerate simulations of these perturbative terms (vadim)
+	\item how do these results (both deer but also correlations) impact other "known" behaviors, e.g. log t growth of mean entanglement and powerlaw decay of "static" correlations?
+\end{enumerate}
+\subsection{List of figures}
+\begin{enumerate}
+	\item DEER2 for Edge-bulk pair of spins vs time for FBC (other more limited versions of this figure-- of PBC and bulk-bulk FBC go into Appendix)
+	\item $J_{typ}$ and $C$ vs r
+	\item fully averaged samples -- evidence of self-averaging of deer
+	\item Static (eigen-averaged) ZZ and $+-$ correlators for edge-bulk pairs of spins for FBC -- extract decay length from the typical correlator and variation of the log variance coeff as for deer
+	\item dynamic ZZ and $+-$ correlators for same spins (averaged wrt product basis?) -- are static distributions accurately sampled? are further separations much more difficult to sample, e.g.  $t\sim exp[+r/\xi]$?
+	\item sketch out the behavior across MBL phase, i.e. try to get $\xi$'s to vary from 0.5 to 2 or so -- ideally, that's mild enough that the basic is the same except few parameters chaning
+	\item Anderson limit?  breakdown of self-averaging, what else?
+\end{enumerate}
+\subsection{dangling questions/stuff to try}
+DEER
+\begin{enumerate}
+\item
+echo and deer with two spins (log t decay) averaged in up/down product states vs eigenstates (need to fix sign averaging to compare)
+\item edge spins (FBC)-- is there a sense in which the system is stronger localized near the edge but crosses over to bulk-type decay with sufficient separation? i.e. compare DEER for edge-bulk vs spin2-bulk
+\item is there a log t profile in single samples?
+\end{enumerate}
+
+zz and spin-flip correlators -- static vs. dynamic (towards diagonal ensemble)
+\begin{enumerate}
+\item .........
+\end{enumerate}
+
+consider a reweighing scheme by which finite temperature is introduced into all these distributions perturbatively, e.g. via $exp(-\beta E)\approx 1-\beta E$.  This should lead to stronger localization = broader distribtuions (?); does it? 
+
+
+\bibliographystyle{unsrt}
+\bibliography{bib}
+
+
+\end{document}
